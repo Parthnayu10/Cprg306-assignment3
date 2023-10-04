@@ -1,4 +1,4 @@
-// item-list.js
+
 
 import React from 'react';
 import Item from './item'; // Make sure to import your Item component
