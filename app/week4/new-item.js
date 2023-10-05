@@ -1,4 +1,4 @@
-// @react
+"use client";
 import React, { useState } from 'react';
 
 function NewItem() {
@@ -21,40 +21,45 @@ function NewItem() {
   };
 
   return (
-    <div>
-      <h2>Add a New Item</h2>
+    <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+      <h2 className="text-2xl font-semibold mb-4">Add a New Item</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="itemName">Item Name:</label>
+        <div className="mb-4">
+          <label htmlFor="itemName" className="block text-gray-700">Item Name:</label>
           <input
             type="text"
             id="itemName"
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
             required
+            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div>
-          <label htmlFor="quantity">Quantity:</label>
+        <div className="mb-4">
+          <label htmlFor="quantity" className="block text-gray-700">Quantity:</label>
           <input
             type="text"
             id="quantity"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
             required
+            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <div>
-          <label htmlFor="category">Category:</label>
+        <div className="mb-4">
+          <label htmlFor="category" className="block text-gray-700">Category:</label>
           <input
             type="text"
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
+            className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
           />
         </div>
-        <button type="submit">Add Item</button>
+        <button type="submit" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 ease-in-out">
+          Add Item
+        </button>
       </form>
     </div>
   );
