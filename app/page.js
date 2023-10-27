@@ -1,6 +1,7 @@
 import Image  from 'next/image';
 import Link from 'next/link'; 
 
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -82,6 +83,20 @@ export default function Home() {
             </h2>
             <p className={`m-0 max-w-[60ch] text-sm opacity-50`}>
               Access week 6.
+            </p>
+          </a>
+          <a
+            href="/week7" // Add the link to "week7" here
+            className="group rounded-lg border border-transparent px-8 py-6 transition-colors to-blue-800 hover:border-gray-30 bg-purple-300 hover:bg-gray-600 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          >
+            <h2 className={`mb-3 text-2xl font-semibold`}>
+              Week 7 {' '}
+              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                -&gt;
+              </span>
+            </h2>
+            <p className={`m-0 max-w-[60ch] text-sm opacity-50`}>
+              Access week 7.
             </p>
           </a>
         </div>
