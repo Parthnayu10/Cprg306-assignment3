@@ -49,10 +49,10 @@ function Page() {
       category: "canned goods"
     },
     {
-      id: "8j3H1k2J3K1H2GJK",
-      name: "spaghetti, 454 g 🍝",
-      quantity: 2,
-      category: "dry goods"
+      "id": "8j3H1k2J3K1H2GJK",
+      "name": "spaghetti, 454 g 🍝",
+      "quantity": 2,
+      "category": "dry goods"
     },
     {
       id: "9H12gkHG31h1H2KJ",
@@ -88,7 +88,9 @@ function Page() {
   };
 
   const handleItemSelect = (item) => {
-    setSelectedItemName(item.name);
+    // Extract the first word from the item's name
+    const ingredient = item.name.split(" ")[0];
+    setSelectedItemName(ingredient);
   };
 
   useEffect(() => {
