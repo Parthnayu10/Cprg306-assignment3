@@ -11,6 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "encoding": "^0.1.13",
+    "firebase": "^10.5.2",
     "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest"
