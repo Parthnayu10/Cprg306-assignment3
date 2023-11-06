@@ -1,4 +1,5 @@
-"use client";
+"use client"; // This comment is not a recognized directive, you can remove it.
+
 import { useContext, createContext, useState, useEffect } from "react";
 import {
   signInWithPopup,
@@ -8,38 +9,32 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 
+// Create the AuthContext
 const AuthContext = createContext();
 
+// AuthContextProvider component
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const gitHubSignIn = async () => {
+  // Function for GitHub sign-in
+  const gitHubSignIn = () => {
     const provider = new GithubAuthProvider();
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      if (error.code === "auth/cancelled-popup-request") {
-        console.log("GitHub sign-in popup was closed.");
-      } else {
-        console.error("Error signing in with GitHub:", error);
-      }
-    }
+    return signInWithPopup(auth, provider);
   };
 
-  const firebaseSignOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Error signing out:", error);
-    }
+  // Function for signing out
+  const firebaseSignOut = () => {
+    return signOut(auth);
   };
 
   useEffect(() => {
+    // Listen for auth state changes
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return () => unsubscribe();
-  }, [user]);
+    
+    return () => unsubscribe(); // Unsubscribe when the component unmounts
+  }, []); // Pass an empty dependency array to run the effect once
 
   return (
     <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut }}>
@@ -48,7 +43,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
+// Custom hook for accessing user and auth functions
 export const useUserAuth = () => {
   return useContext(AuthContext);
 };
- 

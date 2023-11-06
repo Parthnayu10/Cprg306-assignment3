@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect } from 'react';
-import { useUserAuth } from './_utils/auth-context';
+import React from 'react';
+import { useUserAuth } from '../week8/_utils/auth-context';
 
-const Page = () => {
+
+const LandingPage = () => {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   // Function to handle GitHub sign-in
@@ -10,21 +11,31 @@ const Page = () => {
     await gitHubSignIn();
   };
 
-  useEffect(() => {
-    // Your code that uses user, gitHubSignIn, or firebaseSignOut can go here.
-  }, []); // Ensure this code runs on the client-side
-
   const shoppingListStyle = {
     fontSize: '2rem', // Adjust the size as needed
     fontWeight: '600', // Semi-bold
   };
 
+  const handleLogOut = async () => {
+    await firebaseSignOut();
+  };
+
   return (
     <div>
       <p style={shoppingListStyle}>ShoppingList APP {user ? user.displayName : ''}</p>
-      <button onClick={handleGitHubSignIn}>Sign in with GitHub</button>
+      {user ? (
+        <>
+          <p>
+            Welcome, {user.displayName} ({user.email})
+          </p>
+          <button onClick={handleLogOut}>Log Out</button>
+          <a href="/week8/shopping-list">Go to Shopping List</a>
+        </>
+      ) : (
+        <button onClick={handleGitHubSignIn}>Sign in with GitHub</button>
+      )}
     </div>
   );
 };
 
-export default Page;
+export default LandingPage;
